@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
@@ -24,7 +25,6 @@ public class FolderEndpoint {
 
     @GetMapping("/listFolder")
     public File[] scanFile() {
-        return folderScanner.scan(new File("/User/json"));
-
+        return folderScanner.scanRoot();
     }
 }
