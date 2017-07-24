@@ -36,6 +36,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
+            <version>3.5.3</version>
         </dependency>
         <!-- Swagger -->
         <dependency>
@@ -60,16 +61,73 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Annotation processing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <propertyFile>target/classes/liquibase.properties</propertyFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+                <mysql.host>localhost</mysql.host>
+                <mysql.url>jdbc:mysql://${mysql.host}:3306/movie_center?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=true&amp;serverTimezone=Asia/Shanghai</mysql.url>
+                <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
+                <mysql.username>ibrain</mysql.username>
+                <mysql.password>ibrain</mysql.password>
+                <liquibase.contexts>ut, dev</liquibase.contexts>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <activatedProperties>prod</activatedProperties>
+                <mysql.host>localhost</mysql.host>
+                <mysql.url>jdbc:mysql://${mysql.host}:3306/movie_center?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=true&amp;serverTimezone=Asia/Shanghai</mysql.url>
+                <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
+                <mysql.username>ibrain</mysql.username>
+                <mysql.password>ibrain</mysql.password>
+                <liquibase.contexts>ut, dev</liquibase.contexts>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

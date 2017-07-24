@@ -1,5 +1,7 @@
 package com.jason.synology.mmc.io;
 
+import org.springframework.stereotype.Service;
+
 import java.io.File;
 
 /**
@@ -8,6 +10,7 @@ import java.io.File;
  * Date: 2017/7/24
  * Time: 下午3:18
  */
+@Service
 public class FolderScanner {
     public File[] scan(File file) {
         if (file.exists() && file.isDirectory()) {
