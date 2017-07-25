@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jason.synology</groupId>
-    <artifactId>my-movie-center</artifactId>
+    <artifactId>movie-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>my-movie-center</name>
+    <name>movie-center</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -32,6 +32,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <!--thymeleaf模板jar-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>

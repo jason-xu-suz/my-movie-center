@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
  * Time: 下午5:30
  */
 @Component
-@ConfigurationProperties(prefix = "scanRoot")
+@ConfigurationProperties(prefix = "scan")
 public class ScannerProperties {
     private String rootPath;
+    private boolean ignoreDotFolder;
 
     public String getRootPath() {
         return rootPath;
@@ -20,5 +21,13 @@ public class ScannerProperties {
 
     public void setRootPath(String rootPath) {
         this.rootPath = rootPath;
+    }
+
+    public boolean isIgnoreDotFolder() {
+        return ignoreDotFolder;
+    }
+
+    public void setIgnoreDotFolder(boolean ignoreDotFolder) {
+        this.ignoreDotFolder = ignoreDotFolder;
     }
 }

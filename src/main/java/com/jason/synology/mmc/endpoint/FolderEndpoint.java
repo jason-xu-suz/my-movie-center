@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Copyright with Industics company.
@@ -18,13 +19,14 @@ import java.io.File;
  */
 @RestController
 @RequestMapping("api")
-@Api("IO Apis")
+@Api("IO APIs")
 public class FolderEndpoint {
     @Autowired
     private FolderScanner folderScanner;
 
-    @GetMapping("/listFolder")
-    public File[] scanFile() {
+    @ResponseBody
+    @GetMapping("/scan_root_folder")
+    public List<File> scanRootFolder() {
         return folderScanner.scanRoot();
     }
 }

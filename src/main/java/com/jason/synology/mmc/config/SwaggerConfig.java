@@ -1,22 +1,17 @@
 package com.jason.synology.mmc.config;
 
 import com.google.common.base.Predicate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import static com.google.common.base.Predicates.or;
-import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
  * Copyright with Industics company.
@@ -27,6 +22,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+    @Autowired
+    private AppProperties appProperties;
     /**
      * SpringBoot默认已经将classpath:/META-INF/resources/和classpath:/META-INF/resources/webjars/映射
      * 所以该方法不需要重写，如果在SpringMVC中，可能需要重写定义（我没有尝试）
@@ -71,8 +68,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("包含媒体、咨询、搜索引擎关键字、广告等类型接口的服务")//大标题
-                .version("1.0")//版本
+                .title(appProperties.getName() + " APIs")//大标题
+                .version(appProperties.getVersion())//版本
                 .build();
     }
 
