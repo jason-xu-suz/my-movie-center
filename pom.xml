@@ -115,8 +115,8 @@
                 <mysql.host>localhost</mysql.host>
                 <mysql.url>jdbc:mysql://${mysql.host}:3306/movie_center?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=true&amp;serverTimezone=Asia/Shanghai</mysql.url>
                 <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-                <mysql.username>ibrain</mysql.username>
-                <mysql.password>ibrain</mysql.password>
+                <mysql.username>root</mysql.username>
+                <mysql.password>123456</mysql.password>
                 <liquibase.contexts>ut, dev</liquibase.contexts>
             </properties>
         </profile>
@@ -127,12 +127,11 @@
                 <mysql.host>localhost</mysql.host>
                 <mysql.url>jdbc:mysql://${mysql.host}:3306/movie_center?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;nullNamePatternMatchesAll=true&amp;serverTimezone=Asia/Shanghai</mysql.url>
                 <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-                <mysql.username>ibrain</mysql.username>
-                <mysql.password>ibrain</mysql.password>
+                <mysql.username>rppt</mysql.username>
+                <mysql.password>123456</mysql.password>
                 <liquibase.contexts>ut, dev</liquibase.contexts>
             </properties>
         </profile>
     </profiles>
-
 
 </project>
